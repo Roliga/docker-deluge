@@ -4,8 +4,8 @@
 trap "trap - TERM && kill 0" INT EXIT TERM
 
 # Start services in the background, and kill this process group if one of them exits
-{ deluge-web -c /etc/deluge/; kill 0; } &
-{ deluged -d -c /etc/deluge/; kill 0; } &
+{ deluge-web -d -L info -c /etc/deluge/; kill 0; } &
+{ deluged -d -L info -c /etc/deluge/; kill 0; } &
 
 # Wait for all processes to exit, allowing traps to be handled
 wait
